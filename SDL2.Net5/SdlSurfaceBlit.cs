@@ -11,7 +11,7 @@ using SDL_bool = System.Int32;
 
 namespace SDL2.Net5
 {
-    public class SdlSurfaceBlit
+    public static class SdlSurfaceBlit
     {
         public const int SDL_SWSURFACE = 0;
         public const int SDL_PREALLOC = 0x00000001;
