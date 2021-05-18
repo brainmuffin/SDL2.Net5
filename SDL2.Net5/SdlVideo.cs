@@ -96,13 +96,13 @@ namespace SDL2.Net5
         [StructLayout(LayoutKind.Sequential)]
         public struct SDL_DisplayMode
         {
-            public readonly UInt32 format;              /** pixel format */
+            public UInt32 format;              /** pixel format */
             public int w;                      /** width */
             public int h;                      /** height */
-            public int refresh_rate;           /** refresh rate (or zero for unspecified) */
-            public IntPtr driverdata;           /** driver-specific data, initialize to 0 */
+            public int refreshRate;           /** refresh rate (or zero for unspecified) */
+            public IntPtr driverData;           /** driver-specific data, initialize to 0 */
 
-            public override string ToString() => $"{w}x{h} - {refresh_rate} Hz";
+            public override string ToString() => $"{w}x{h} - {refreshRate} Hz";
 
             public override bool Equals(object obj) => obj is SDL_DisplayMode && this == (SDL_DisplayMode)obj;
             public override int GetHashCode()
@@ -111,14 +111,14 @@ namespace SDL2.Net5
                 hash = hash * 23 + format.GetHashCode();
                 hash = hash * 23 + w.GetHashCode();
                 hash = hash * 23 + h.GetHashCode();
-                hash = hash * 23 + refresh_rate.GetHashCode();
+                hash = hash * 23 + refreshRate.GetHashCode();
                 return hash;
             }
             public static bool operator ==(SDL_DisplayMode one, SDL_DisplayMode two) =>
                 one.format == two.format &&
                     one.w == two.w &&
                     one.h == two.h &&
-                    one.refresh_rate == two.refresh_rate;
+                    one.refreshRate == two.refreshRate;
             public static bool operator !=(SDL_DisplayMode one, SDL_DisplayMode two) => !(one == two);
         }
 
@@ -249,17 +249,17 @@ namespace SDL2.Net5
         private static readonly SdlGetWindowSizeIntPtrIntIntT SSdlGetWindowSizeIntPtrIntIntT = __LoadFunction<SdlGetWindowSizeIntPtrIntIntT>("SDL_GetWindowSize");
         public static void SDL_GetWindowSize(IntPtr window, out int w, out int h) => SSdlGetWindowSizeIntPtrIntIntT(window, out w, out h);
 
-        private delegate void SdlSetWindowMinimumSizeIntPtrIntIntT(IntPtr window, int min_w, int min_h);
+        private delegate void SdlSetWindowMinimumSizeIntPtrIntIntT(IntPtr window, int minW, int minH);
         private static readonly SdlSetWindowMinimumSizeIntPtrIntIntT SSdlSetWindowMinimumSizeIntPtrIntIntT = __LoadFunction<SdlSetWindowMinimumSizeIntPtrIntIntT>("SDL_SetWindowMinimumSize");
-        public static void SDL_SetWindowMinimumSize(IntPtr window, int min_w, int min_h) => SSdlSetWindowMinimumSizeIntPtrIntIntT(window, min_w, min_h);
+        public static void SDL_SetWindowMinimumSize(IntPtr window, int minW, int minH) => SSdlSetWindowMinimumSizeIntPtrIntIntT(window, minW, minH);
 
         private delegate void SdlGetWindowMinimumSizeIntPtrIntIntT(IntPtr window, out int w, out int h);
         private static readonly SdlGetWindowMinimumSizeIntPtrIntIntT SSdlGetWindowMinimumSizeIntPtrIntIntT = __LoadFunction<SdlGetWindowMinimumSizeIntPtrIntIntT>("SDL_GetWindowMinimumSize");
         public static void SDL_GetWindowMinimumSize(IntPtr window, out int w, out int h) => SSdlGetWindowMinimumSizeIntPtrIntIntT(window, out w, out h);
 
-        private delegate void SdlSetWindowMaximumSizeIntPtrIntIntT(IntPtr window, int max_w, int max_h);
+        private delegate void SdlSetWindowMaximumSizeIntPtrIntIntT(IntPtr window, int maxW, int maxH);
         private static readonly SdlSetWindowMaximumSizeIntPtrIntIntT SSdlSetWindowMaximumSizeIntPtrIntIntT = __LoadFunction<SdlSetWindowMaximumSizeIntPtrIntIntT>("SDL_SetWindowMaximumSize");
-        public static void SDL_SetWindowMaximumSize(IntPtr window, int max_w, int max_h) => SSdlSetWindowMaximumSizeIntPtrIntIntT(window, max_w, max_h);
+        public static void SDL_SetWindowMaximumSize(IntPtr window, int maxW, int maxH) => SSdlSetWindowMaximumSizeIntPtrIntIntT(window, maxW, maxH);
 
         private delegate void SdlGetWindowMaximumSizeIntPtrIntIntT(IntPtr window, out int w, out int h);
         private static readonly SdlGetWindowMaximumSizeIntPtrIntIntT SSdlGetWindowMaximumSizeIntPtrIntIntT = __LoadFunction<SdlGetWindowMaximumSizeIntPtrIntIntT>("SDL_GetWindowMaximumSize");
@@ -379,8 +379,8 @@ namespace SDL2.Net5
         public static int SDL_GL_GetAttribute(SDL_GLattr attr, out int value) => SSdlGlGetAttributeSdlGLattrIntT(attr, out value);
 
         private delegate SDL_GLContext SdlGlCreateContextIntPtrT(IntPtr window);
-        private static SdlGlCreateContextIntPtrT s_SDL_GL_CreateContext_IntPtr_t = __LoadFunction<SdlGlCreateContextIntPtrT>("SDL_GL_CreateContext");
-        public static SDL_GLContext SDL_GL_CreateContext(IntPtr window) => s_SDL_GL_CreateContext_IntPtr_t(window);
+        private static readonly SdlGlCreateContextIntPtrT SSSdlGlCreateContextIntPtrT = __LoadFunction<SdlGlCreateContextIntPtrT>("SDL_GL_CreateContext");
+        public static SDL_GLContext SDL_GL_CreateContext(IntPtr window) => SSSdlGlCreateContextIntPtrT(window);
 
         private delegate int SdlGlMakeCurrentIntPtrSdlGlContextT(IntPtr window, SDL_GLContext context);
         private static readonly SdlGlMakeCurrentIntPtrSdlGlContextT SSdlGlMakeCurrentIntPtrSdlGlContextT = __LoadFunction<SdlGlMakeCurrentIntPtrSdlGlContextT>("SDL_GL_MakeCurrent");
