@@ -16,7 +16,7 @@ namespace CreateWindow
 {
     internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             const int width = 800;
             const int height = 600;
