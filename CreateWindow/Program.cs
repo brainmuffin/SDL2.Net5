@@ -42,7 +42,7 @@ namespace CreateWindow
 
             WaitForWindowToBeClose();
 
-            SDL_FreeSurface(surface);
+            SdlFreeSurface(surface);
             SDL_DestroyRenderer(renderer);
             SDL_DestroyWindow(window);
             

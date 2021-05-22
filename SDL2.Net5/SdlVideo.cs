@@ -191,13 +191,13 @@ namespace SDL2.Net5
         private static readonly SdlGetWindowPixelFormatIntPtrT SSdlGetWindowPixelFormatIntPtrT = __LoadFunction<SdlGetWindowPixelFormatIntPtrT>("SDL_GetWindowPixelFormat");
         public static uint SDL_GetWindowPixelFormat(IntPtr window) => SSdlGetWindowPixelFormatIntPtrT(window);
 
-        private delegate IntPtr SdlCreateWindow(IntPtr title, int x, int y, int w, int h, UInt32 flags);
-        private static readonly SdlCreateWindow SSdlCreateWindowIntPtrIntIntIntIntUInt32T = __LoadFunction<SdlCreateWindow>("SDL_CreateWindow");
-        public static IntPtr SDL_CreateWindow(string title, int x, int y, int w, int h, UInt32 flags) => SSdlCreateWindowIntPtrIntIntIntIntUInt32T(Util.StringToHGlobalUTF8(title), x, y, w, h, flags);
+        private delegate IntPtr SdlCreateWindowIntPtr(IntPtr title, int x, int y, int w, int h, UInt32 flags);
+        private static readonly SdlCreateWindowIntPtr SSdlCreateWindowIntPtrIntIntIntIntUInt32T = __LoadFunction<SdlCreateWindowIntPtr>("SDL_CreateWindow");
+        public static IntPtr SdlCreateWindow(string title, int x, int y, int w, int h, UInt32 flags) => SSdlCreateWindowIntPtrIntIntIntIntUInt32T(Util.StringToHGlobalUTF8(title), x, y, w, h, flags);
         
         private delegate IntPtr SdlCreateWindowFromIntPtrT(IntPtr data);
         private static readonly SdlCreateWindowFromIntPtrT SSdlCreateWindowFromIntPtrT = __LoadFunction<SdlCreateWindowFromIntPtrT>("SDL_CreateWindowFrom");
-        public static IntPtr SDL_CreateWindowFrom(IntPtr data) => SSdlCreateWindowFromIntPtrT(data);
+        public static IntPtr SdlCreateWindowFrom(IntPtr data) => SSdlCreateWindowFromIntPtrT(data);
 
         private delegate uint SdlGetWindowId(IntPtr window);
         private static readonly SdlGetWindowId SSdlGetWindowId = __LoadFunction<SdlGetWindowId>("SDL_GetWindowID");
@@ -303,7 +303,7 @@ namespace SDL2.Net5
 
         private delegate int SdlUpdateWindowSurfaceIntPtrT(IntPtr window);
         private static readonly SdlUpdateWindowSurfaceIntPtrT SSdlUpdateWindowSurfaceIntPtrT = __LoadFunction<SdlUpdateWindowSurfaceIntPtrT>("SDL_UpdateWindowSurface");
-        public static int SDL_UpdateWindowSurface(IntPtr window) => SSdlUpdateWindowSurfaceIntPtrT(window);
+        public static int SdlUpdateWindowSurface(IntPtr window) => SSdlUpdateWindowSurfaceIntPtrT(window);
 
         private delegate int SdlUpdateWindowSurfaceRectsIntPtrSdlRectIntT(IntPtr window, ref SdlPointRect.SdlRect rects, int numrects);
         private static readonly SdlUpdateWindowSurfaceRectsIntPtrSdlRectIntT SSdlUpdateWindowSurfaceRectsIntPtrSdlRectIntT = __LoadFunction<SdlUpdateWindowSurfaceRectsIntPtrSdlRectIntT>("SDL_UpdateWindowSurfaceRects");

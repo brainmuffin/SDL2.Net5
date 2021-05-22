@@ -23,7 +23,7 @@ namespace LazyFooTutorials
                 if (SdlInit(SDL_INIT_VIDEO) != 0)
                     throw new Exception($"SDL could not initialize! SDL_Error: {SdlGetError()}");
 
-                var window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED_MASK, SDL_WINDOWPOS_UNDEFINED_MASK,
+                var window = SdlCreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED_MASK, SDL_WINDOWPOS_UNDEFINED_MASK,
                     SDL_SCREEN_WIDTH, SDL_SCREEN_HEIGHT, (uint) SdlVideo.SDL_WindowFlags.SDL_WINDOW_SHOWN);
                 if (window == IntPtr.Zero)
                     throw new Exception($"Window could not be created! SDL_Error: {SdlGetError()}");
@@ -35,7 +35,7 @@ namespace LazyFooTutorials
                 SDL_FillRect( screenSurface, null, SdlMapRGB( convertedScreen.format, 0xFF, 0xFF, 0xFF ) );
             
                 //Update the surface
-                SDL_UpdateWindowSurface( window );
+                SdlUpdateWindowSurface( window );
 
                 //Wait two seconds
                 SdlDelay( 4000 );

@@ -10,4 +10,10 @@
       <ProjectReference Include="..\SDL2.Net5\SDL2.Net5.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="02_getting_an_image_on_the_screen\hello_world.bmp">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

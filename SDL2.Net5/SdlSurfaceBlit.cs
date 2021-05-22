@@ -90,7 +90,7 @@ namespace SDL2.Net5
 
         private delegate void SdlFreeSurfaceSdlSurfaceT(IntPtr surface);
         private static readonly SdlFreeSurfaceSdlSurfaceT SSdlFreeSurfaceSdlSurfaceT = __LoadFunction<SdlFreeSurfaceSdlSurfaceT>("SDL_FreeSurface");
-        public static void SDL_FreeSurface(IntPtr surface) => SSdlFreeSurfaceSdlSurfaceT(surface);
+        public static void SdlFreeSurface(IntPtr surface) => SSdlFreeSurfaceSdlSurfaceT(surface);
 
         private delegate int SdlSetSurfacePaletteSdlSurfaceSdlPaletteT(IntPtr surface, ref SdlPalette palette);
         private static readonly SdlSetSurfacePaletteSdlSurfaceSdlPaletteT SSdlSetSurfacePaletteSdlSurfaceSdlPaletteT = __LoadFunction<SdlSetSurfacePaletteSdlSurfaceSdlPaletteT>("SDL_SetSurfacePalette");
@@ -189,10 +189,10 @@ namespace SDL2.Net5
         private static readonly SdlConvertSurfaceFormatIntPtrUInt32UInt32T SSdlConvertSurfaceFormatIntPtrUInt32UInt32T = __LoadFunction<SdlConvertSurfaceFormatIntPtrUInt32UInt32T>("SDL_ConvertSurfaceFormat");
         public static IntPtr SDL_ConvertSurfaceFormat(IntPtr src, UInt32 fmt, UInt32 flags) => SSdlConvertSurfaceFormatIntPtrUInt32UInt32T(src, fmt, flags);
 
-        private delegate int SdlUpperBlit(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect);
-        private static readonly SdlUpperBlit SSdlUpperBlit = __LoadFunction<SdlUpperBlit>("SDL_UpperBlit");
-        public static int SDL_UpperBlit(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect) => SSdlUpperBlit(src, srcrect, dst, dstrect);
-        public static int SDL_BlitSurface(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect) => SDL_UpperBlit(src, srcrect, dst, dstrect);
+        private delegate int SdlUpperBlitIntPtrIntPtr(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect);
+        private static readonly SdlUpperBlitIntPtrIntPtr SSdlUpperBlit = __LoadFunction<SdlUpperBlitIntPtrIntPtr>("SDL_UpperBlit");
+        public static int SdlUpperBlit(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect) => SSdlUpperBlit(src, srcrect, dst, dstrect);
+        public static int SdlBlitSurface(IntPtr src, IntPtr srcrect, IntPtr dst, IntPtr dstrect) => SdlUpperBlit(src, srcrect, dst, dstrect);
         
         private static T __LoadFunction<T>(string name) { return Internal.LoaderSdl2.LoadFunction<T>(name); }
 
