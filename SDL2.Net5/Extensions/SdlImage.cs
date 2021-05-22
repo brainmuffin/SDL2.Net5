@@ -17,7 +17,7 @@ namespace SDL2.Net5.Extensions
         private static readonly ImgLoadT SImgLoad = __LoadFunction<ImgLoadT>("IMG_Load");
         public static IntPtr IMG_Load(string file) => SImgLoad(Util.StringToHGlobalUTF8(file));
         
-        public static string IMG_GetError() => SdlError.SDL_GetError();
+        public static string IMG_GetError() => SdlErrorCode.SdlGetError();
         
         private delegate int ImgInitT();
         private static readonly ImgInitT SImgInitT = __LoadFunction<ImgInitT>("IMG_Init");

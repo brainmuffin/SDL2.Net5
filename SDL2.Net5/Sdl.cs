@@ -18,7 +18,7 @@ namespace SDL2.Net5
 
         private delegate int SdlInitUInt32T(UInt32 flags);
         private static readonly SdlInitUInt32T SSdlInitUInt32T = __LoadFunction<SdlInitUInt32T>("SDL_Init");
-        public static int SDL_Init(uint flags) => SSdlInitUInt32T(flags);
+        public static int SdlInit(uint flags) => SSdlInitUInt32T(flags);
 
         private delegate int SdlInitSubSystemUInt32T(UInt32 flags);
         private static SdlInitSubSystemUInt32T s_SDL_InitSubSystem_UInt32_t = __LoadFunction<SdlInitSubSystemUInt32T>("SDL_InitSubSystem");
@@ -34,7 +34,7 @@ namespace SDL2.Net5
 
         private delegate void SdlQuitT();
         private static readonly SdlQuitT SSdlQuitT = __LoadFunction<SdlQuitT>("SDL_Quit");
-        public static void SDL_Quit() => SSdlQuitT();
+        public static void SdlQuit() => SSdlQuitT();
         
         private static T __LoadFunction<T>(string name)
         {

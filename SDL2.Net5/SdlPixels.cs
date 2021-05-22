@@ -293,7 +293,7 @@ namespace SDL2.Net5
 
         private delegate uint SdlMapRgbSdlPixelFormatByteByteByteT(IntPtr format, byte r, byte g, byte b);
         private static readonly SdlMapRgbSdlPixelFormatByteByteByteT SSdlMapRgbSdlPixelFormatByteByteByteT = __LoadFunction<SdlMapRgbSdlPixelFormatByteByteByteT>("SDL_MapRGB");
-        public static uint SDL_MapRGB(IntPtr format, byte r, byte g, byte b) => SSdlMapRgbSdlPixelFormatByteByteByteT(format, r, g, b);
+        public static uint SdlMapRGB(IntPtr format, byte r, byte g, byte b) => SSdlMapRgbSdlPixelFormatByteByteByteT(format, r, g, b);
 
         private delegate uint SdlMapRgbaSdlPixelFormatByteByteByteByteT(IntPtr format, byte r, byte g, byte b, byte a);
         private static readonly SdlMapRgbaSdlPixelFormatByteByteByteByteT SSdlMapRgbaSdlPixelFormatByteByteByteByteT = __LoadFunction<SdlMapRgbaSdlPixelFormatByteByteByteByteT>("SDL_MapRGBA");

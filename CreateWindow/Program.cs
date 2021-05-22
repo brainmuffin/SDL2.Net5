@@ -5,7 +5,7 @@ using SDL2.Net5.Extensions;
 using static System.Runtime.InteropServices.RuntimeInformation;
 
 using static SDL2.Net5.Sdl;
-using static SDL2.Net5.SdlError;
+using static SDL2.Net5.SdlErrorCode;
 using static SDL2.Net5.SdlPointRect;
 using static SDL2.Net5.SdlRender;
 using static SDL2.Net5.SdlSurfaceBlit;
@@ -21,8 +21,8 @@ namespace CreateWindow
             const int width = 800;
             const int height = 600;
 
-            if (SDL_Init(SDL_INIT_VIDEO) != 0)
-                throw new Exception($"Could not init SDL: {SDL_GetError()}");
+            if (SdlInit(SDL_INIT_VIDEO) != 0)
+                throw new Exception($"Could not init SDL: {SdlGetError()}");
             
             var result = SDL_CreateWindowAndRenderer(width, height,
                 (uint)(SDL_WindowFlags.SDL_WINDOW_SHOWN |
@@ -31,7 +31,7 @@ namespace CreateWindow
                 out var renderer);
 
             if (result != 0)
-                throw new Exception($"Could not initialize window: {SDL_GetError()}");
+                throw new Exception($"Could not initialize window: {SdlGetError()}");
             
             SDL_RenderClear(renderer);
             
@@ -46,7 +46,7 @@ namespace CreateWindow
             SDL_DestroyRenderer(renderer);
             SDL_DestroyWindow(window);
             
-            SDL_Quit();
+            SdlQuit();
         }
         
         private static void WaitForWindowToBeClose()
@@ -83,7 +83,7 @@ namespace CreateWindow
             var font = SdlTtf.TTF_OpenFont(ArialFontFilename(), 128);
             
             if (font == IntPtr.Zero)
-                throw new Exception($"Could not initialize font: {SDL_GetError()}");
+                throw new Exception($"Could not initialize font: {SdlGetError()}");
             
             var color = new SdlPixels.SdlColor { r = 255, g = 255, b = 255, a = 255 };
             var surface = SdlTtf.TTF_RenderText_Solid(font,

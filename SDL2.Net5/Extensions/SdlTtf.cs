@@ -6,7 +6,7 @@ namespace SDL2.Net5.Extensions
 {
     public class SdlTtf
     {
-        public static string TTF_GetError() => SdlError.SDL_GetError();
+        public static string TTF_GetError() => SdlErrorCode.SdlGetError();
         
         private delegate void TtfLinkedVersionT();
         private static readonly TtfLinkedVersionT SSTtfLinkedVersionT = __LoadFunction<TtfLinkedVersionT>("TTF_Linked_Version");
