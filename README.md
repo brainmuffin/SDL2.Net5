@@ -9,13 +9,13 @@ A library of mappings for the SDL2 libraries written against .Net 5. This is bas
 
 # Project is still in Development Phase
 
-#NuGet Dependencies
+# NuGet Dependencies
 NativeLibraryLoader
 
-#Examples
+# Examples
 Console program to open a Window
 
-#Lazy Foo Tutorials
+# Lazy Foo Tutorials
 Converted from the C++ into C#, refactored to follow the coding standards of C# more closely. Use of functional ideas and LINQ.
 
 # Supported Platforms
