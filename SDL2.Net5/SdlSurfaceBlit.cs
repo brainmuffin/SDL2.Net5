@@ -106,9 +106,9 @@ namespace SDL2.Net5
 
         private delegate IntPtr SdlLoadBmpRwSdlRWopsIntT(IntPtr src, int freesrc);
         private static readonly SdlLoadBmpRwSdlRWopsIntT SSdlLoadBmpRwSdlRWopsIntT = __LoadFunction<SdlLoadBmpRwSdlRWopsIntT>("SDL_LoadBMP_RW");
-        public static IntPtr SDL_LoadBMP_RW(IntPtr src, int freesrc) => SSdlLoadBmpRwSdlRWopsIntT(src, freesrc);
+        public static IntPtr SdlLoadBmpRw(IntPtr src, int freeSrc) => SSdlLoadBmpRwSdlRWopsIntT(src, freeSrc);
         
-        public static IntPtr SDL_LoadBMP(string filename) => SDL_LoadBMP_RW(SDL_RWFromFile(Util.StringToHGlobalUTF8(filename), Util.StringToHGlobalUTF8("rb")), 1);
+        public static IntPtr SdlLoadBmp(string filename) => SdlLoadBmpRw(SDL_RWFromFile(Util.StringToHGlobalUTF8(filename), Util.StringToHGlobalUTF8("rb")), 1);
 
         private delegate int SdlSetSurfaceRleSdlSurfaceIntT(IntPtr surface, int flag);
         private static readonly SdlSetSurfaceRleSdlSurfaceIntT SSdlSetSurfaceRleSdlSurfaceIntT = __LoadFunction<SdlSetSurfaceRleSdlSurfaceIntT>("SDL_SetSurfaceRLE");
@@ -161,10 +161,9 @@ namespace SDL2.Net5
         private unsafe delegate int SdlSoftStretchSdlSurfaceSdlRectSdlSurfaceSdlRectT(IntPtr src, SdlRect* srcrect, IntPtr dst, SdlRect* dstrect);
         private unsafe delegate int SdlBlitScaledIntPtrSdlRectIntPtrSdlRectT(IntPtr src, SdlRect* srcrect, IntPtr dst, SdlRect* dstrect);
         private static readonly SdlBlitScaledIntPtrSdlRectIntPtrSdlRectT SSdlBlitScaledIntPtrSdlRectIntPtrSdlRectT;
-        public static unsafe int SDL_BlitScaled(IntPtr src, SdlRect* srcrect, IntPtr dst, SdlRect* dstrect) => SSdlBlitScaledIntPtrSdlRectIntPtrSdlRectT(src, srcrect, dst, dstrect);
+        public static unsafe int SdlBlitScaled(IntPtr src, SdlRect* srcrect, IntPtr dst, SdlRect* dstrect) => SSdlBlitScaledIntPtrSdlRectIntPtrSdlRectT(src, srcrect, dst, dstrect);
 
-        public static unsafe int SDL_BlitScaled(IntPtr src, IntPtr dst) =>
-            SDL_BlitScaled(src, null, dst, null);
+        public static unsafe int SdlBlitScaled(IntPtr src, IntPtr dst) => SdlBlitScaled(src, null, dst, null);
 
         private unsafe delegate int SdlLowerBlitScaledIntPtrSdlRectIntPtrSdlRectT(IntPtr src, SdlRect* srcrect, IntPtr dst, SdlRect* dstrect);
         private static readonly SdlLowerBlitScaledIntPtrSdlRectIntPtrSdlRectT SSdlLowerBlitScaledIntPtrSdlRectIntPtrSdlRectT = __LoadFunction<SdlLowerBlitScaledIntPtrSdlRectIntPtrSdlRectT>("SDL_LowerBlitScaled");
@@ -172,14 +171,14 @@ namespace SDL2.Net5
 
         private unsafe delegate int SdlFillRectIntPtrSdlRectUInt32T(IntPtr dst, SdlRect* rect, UInt32 color);
         private static readonly SdlFillRectIntPtrSdlRectUInt32T SSdlFillRectIntPtrSdlRectUInt32T = __LoadFunction<SdlFillRectIntPtrSdlRectUInt32T>("SDL_FillRect");
-        public static unsafe int SDL_FillRect(IntPtr dst, SdlRect* rect, UInt32 color) => SSdlFillRectIntPtrSdlRectUInt32T(dst, rect, color);
+        public static unsafe int SdlFillRect(IntPtr dst, SdlRect* rect, UInt32 color) => SSdlFillRectIntPtrSdlRectUInt32T(dst, rect, color);
 
         private delegate int SdlFillRectsIntPtrIntPtrIntUInt32T(IntPtr dst, IntPtr rects, int count, UInt32 color);
         private static readonly SdlFillRectsIntPtrIntPtrIntUInt32T SSdlFillRectsIntPtrIntPtrIntUInt32T = __LoadFunction<SdlFillRectsIntPtrIntPtrIntUInt32T>("SDL_FillRects");
-        public static int SDL_FillRects(IntPtr dst, IntPtr rects, int count, UInt32 color) => SSdlFillRectsIntPtrIntPtrIntUInt32T(dst, rects, count, color);
+        public static int SdlFillRects(IntPtr dst, IntPtr rects, int count, UInt32 color) => SSdlFillRectsIntPtrIntPtrIntUInt32T(dst, rects, count, color);
 
         private static readonly SdlSoftStretchSdlSurfaceSdlRectSdlSurfaceSdlRectT SSdlSoftStretchSdlSurfaceSdlRectSdlSurfaceSdlRectT = __LoadFunction<SdlSoftStretchSdlSurfaceSdlRectSdlSurfaceSdlRectT>("SDL_SoftStretch");
-        public static unsafe int SDL_SoftStretch(IntPtr src, SdlRect* srcrect, IntPtr dst, SdlRect* dstrect) => SSdlSoftStretchSdlSurfaceSdlRectSdlSurfaceSdlRectT(src, srcrect, dst, dstrect);
+        public static unsafe int SdlSoftStretch(IntPtr src, SdlRect* srcrect, IntPtr dst, SdlRect* dstrect) => SSdlSoftStretchSdlSurfaceSdlRectSdlSurfaceSdlRectT(src, srcrect, dst, dstrect);
 
         private delegate IntPtr SdlConvertSurfaceIntPtrIntPtrUInt32T(IntPtr src, IntPtr fmt, UInt32 flags);
         private static readonly SdlConvertSurfaceIntPtrIntPtrUInt32T SSdlConvertSurfaceIntPtrIntPtrUInt32T = __LoadFunction<SdlConvertSurfaceIntPtrIntPtrUInt32T>("SDL_ConvertSurface");

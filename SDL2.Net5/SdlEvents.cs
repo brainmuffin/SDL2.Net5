@@ -13,7 +13,7 @@ using System.Runtime.CompilerServices;
 
 namespace SDL2.Net5
 {
-    public class SdlEvents
+    public static class SdlEvents
     {
         public const int SDL_RELEASED = 0;
         public const int SDL_PRESSED = 1;
@@ -702,11 +702,11 @@ namespace SDL2.Net5
 
         private delegate int PollEventSdlEventT(out SDL_Event @event);
         private static readonly PollEventSdlEventT SSSdlPollEventSdlEventT = __LoadFunction<PollEventSdlEventT>("SDL_PollEvent");
-        public static int SDL_PollEvent(out SDL_Event @event) => SSSdlPollEventSdlEventT(out @event);
+        public static int SdlPollEvent(out SDL_Event @event) => SSSdlPollEventSdlEventT(out @event);
 
         private delegate int WaitEventSdlEventT(ref SDL_Event @event);
         private static readonly WaitEventSdlEventT SSSdlWaitEventSdlEventT = __LoadFunction<WaitEventSdlEventT>("SDL_WaitEvent");
-        public static int SDL_WaitEvent(ref SDL_Event @event) => SSSdlWaitEventSdlEventT(ref @event);
+        public static int SdlWaitEvent(ref SDL_Event @event) => SSSdlWaitEventSdlEventT(ref @event);
 
         private delegate int WaitEventTimeoutSdlEventIntT(ref SDL_Event @event, int timeout);
         private static readonly WaitEventTimeoutSdlEventIntT SSSdlWaitEventTimeoutSdlEventIntT = __LoadFunction<WaitEventTimeoutSdlEventIntT>("SDL_WaitEventTimeout");

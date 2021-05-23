@@ -14,6 +14,9 @@
       <None Update="02_getting_an_image_on_the_screen\hello_world.bmp">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+      <None Update="03_event_driven_programming\x.bmp">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

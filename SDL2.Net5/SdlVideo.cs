@@ -299,7 +299,7 @@ namespace SDL2.Net5
 
         private delegate IntPtr SdlGetWindowSurfaceIntPtrT(IntPtr window);
         private static readonly SdlGetWindowSurfaceIntPtrT SSdlGetWindowSurfaceIntPtrT = __LoadFunction<SdlGetWindowSurfaceIntPtrT>("SDL_GetWindowSurface");
-        public static IntPtr SDL_GetWindowSurface(IntPtr window) => SSdlGetWindowSurfaceIntPtrT(window);
+        public static IntPtr SdlGetWindowSurface(IntPtr window) => SSdlGetWindowSurfaceIntPtrT(window);
 
         private delegate int SdlUpdateWindowSurfaceIntPtrT(IntPtr window);
         private static readonly SdlUpdateWindowSurfaceIntPtrT SSdlUpdateWindowSurfaceIntPtrT = __LoadFunction<SdlUpdateWindowSurfaceIntPtrT>("SDL_UpdateWindowSurface");
@@ -335,11 +335,11 @@ namespace SDL2.Net5
 
         private delegate void SdlDestroyWindowIntPtrT(IntPtr window);
         private static readonly SdlDestroyWindowIntPtrT SSdlDestroyWindowIntPtrT = __LoadFunction<SdlDestroyWindowIntPtrT>("SDL_DestroyWindow");
-        public static void SDL_DestroyWindow(IntPtr window) => SSdlDestroyWindowIntPtrT(window);
+        public static void SdlDestroyWindow(IntPtr window) => SSdlDestroyWindowIntPtrT(window);
 
         private delegate SDL_bool SdlIsScreenSaverEnabledT();
         private static readonly SdlIsScreenSaverEnabledT SSdlIsScreenSaverEnabledT = __LoadFunction<SdlIsScreenSaverEnabledT>("SDL_IsScreenSaverEnabled");
-        public static SDL_bool SDL_IsScreenSaverEnabled() => SSdlIsScreenSaverEnabledT();
+        public static SDL_bool SdlIsScreenSaverEnabled() => SSdlIsScreenSaverEnabledT();
 
         private delegate void SdlEnableScreenSaverT();
         private static readonly SdlEnableScreenSaverT SSdlEnableScreenSaverT = __LoadFunction<SdlEnableScreenSaverT>("SDL_EnableScreenSaver");

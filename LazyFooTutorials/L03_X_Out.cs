@@ -1,21 +1,22 @@
 using System;
+using SDL2.Net5;
 
 using static SDL2.Net5.Sdl;
 using static SDL2.Net5.SdlErrorCode;
+using static SDL2.Net5.SdlEvents;
 using static SDL2.Net5.SdlSurfaceBlit;
-using static SDL2.Net5.SdlTimer;
 using static SDL2.Net5.SdlVideo;
 
 namespace LazyFooTutorials
 {
-    public class L02_Hello_Image : ILesson
+    public class L03_X_Out : ILesson
     {
         private const int SCREEN_WIDTH = 640;
         private const int SCREEN_HEIGHT = 480;
 
         private IntPtr _window;
         private IntPtr _screenSurface;
-        private IntPtr _helloWorld;
+        private IntPtr _xOut;
 
         public void Show()
         {
@@ -25,11 +26,23 @@ namespace LazyFooTutorials
             if( !LoadImage() )
                 throw new Exception( "Failed to load media!" );
 
-            SdlBlitSurface(_helloWorld, IntPtr.Zero, _screenSurface, IntPtr.Zero);
-            
-            SdlUpdateWindowSurface( _window );
-            
-            SdlDelay( 5000 );
+            var quit = false;
+
+            while (!quit)
+            {
+                while( SdlPollEvent( out var raisedEvent ) != 0 )
+                {
+                    //User requests quit
+                    if( (SdlEvents.SDL_EventType) raisedEvent.type == SdlEvents.SDL_EventType.SDL_QUIT )
+                    {
+                        quit = true;
+                    }
+                }
+
+                SdlBlitSurface(_xOut, IntPtr.Zero, _screenSurface, IntPtr.Zero);
+
+                SdlUpdateWindowSurface(_window);
+            }
 
             Close();
         }
@@ -57,10 +70,10 @@ namespace LazyFooTutorials
         
         private bool LoadImage()
         {
-            _helloWorld = SdlLoadBmp( "02_getting_an_image_on_the_screen/hello_world.bmp" );
-            if( _helloWorld == IntPtr.Zero )
+            _xOut = SdlLoadBmp( "03_event_driven_programming/x.bmp" );
+            if( _xOut == IntPtr.Zero )
             {
-                Console.WriteLine($"Unable to load image 02_getting_an_image_on_the_screen/hello_world.bmp! SDL Error: {SdlGetError()}");
+                Console.WriteLine($"Unable to load image 03_event_driven_programming/x.bmp! SDL Error: {SdlGetError()}");
                 return false;
             }
 
@@ -69,7 +82,7 @@ namespace LazyFooTutorials
 
         private void Close()
         {
-            SdlFreeSurface( _helloWorld );
+            SdlFreeSurface( _xOut );
             
             SdlDestroyWindow( _window );
             

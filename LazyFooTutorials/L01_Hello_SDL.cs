@@ -11,12 +11,12 @@ using static SDL2.Net5.SdlTimer;
 
 namespace LazyFooTutorials
 {
-    public class L01_Hello_SDL
+    public class L01_Hello_SDL : ILesson
     {
         private const int SDL_SCREEN_WIDTH = 640;
         private const int SDL_SCREEN_HEIGHT = 480;
         
-        public static void Show()
+        public void Show()
         {
             unsafe
             {
@@ -28,11 +28,11 @@ namespace LazyFooTutorials
                 if (window == IntPtr.Zero)
                     throw new Exception($"Window could not be created! SDL_Error: {SdlGetError()}");
             
-                var screenSurface = SDL_GetWindowSurface( window );
+                var screenSurface = SdlGetWindowSurface( window );
                 var convertedScreen = Marshal.PtrToStructure<SdlSurface>(screenSurface);
 
                 //Fill the surface white
-                SDL_FillRect( screenSurface, null, SdlMapRGB( convertedScreen.format, 0xFF, 0xFF, 0xFF ) );
+                SdlFillRect( screenSurface, null, SdlMapRGB( convertedScreen.format, 0xFF, 0xFF, 0xFF ) );
             
                 //Update the surface
                 SdlUpdateWindowSurface( window );
@@ -40,7 +40,7 @@ namespace LazyFooTutorials
                 //Wait two seconds
                 SdlDelay( 4000 );
                 
-                SDL_DestroyWindow( window );
+                SdlDestroyWindow( window );
 
                 //Quit SDL subsystems
                 SdlQuit();

@@ -44,7 +44,7 @@ namespace CreateWindow
 
             SdlFreeSurface(surface);
             SDL_DestroyRenderer(renderer);
-            SDL_DestroyWindow(window);
+            SdlDestroyWindow(window);
             
             SdlQuit();
         }
@@ -56,7 +56,7 @@ namespace CreateWindow
 
             while (!quit)
             {
-                SDL_WaitEvent(ref raisedEvent);
+                SdlWaitEvent(ref raisedEvent);
 
                 switch ((SDL_EventType) raisedEvent.type)
                 {
