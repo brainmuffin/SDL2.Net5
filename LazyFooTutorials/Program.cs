@@ -20,7 +20,8 @@ namespace LazyFooTutorials
             {
                 {"L01", () => new L01_Hello_SDL()},
                 {"L02", () => new L02_Hello_Image()},
-                {"L03", () => new L03_X_Out()}
+                {"L03", () => new L03_X_Out()},
+                {"L04", () => new L04_Key_Presses()}
             };
 
         private static void Main(string[] args)
