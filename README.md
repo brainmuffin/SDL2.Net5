@@ -1,3 +1,5 @@
+![Stability: alpha](https://img.shields.io/badge/stability-alpha-orange.svg)
+
 # SDL2.Net5
 More than just another port to a newer .Net, SDL2.Net5 is also a rewrite of the API to more closely follow C# conventions. 
 
